@@ -9,18 +9,23 @@
     "jsxImportSource": "hono/jsx",
 
     // Types
-    "types": ["bun-types"],
+    "types": ["bun-types", "@cloudflare/workers-types"],
 
     // Output settings
     "declaration": true,
-    "outDir": "dist",
+    "outDir": "./dist",
     "noEmit": false,
     "emitDecoratorMetadata": true,
 
     // Module resolution
     "moduleResolution": "bundler",
-    "allowImportingTsExtensions": false
+    "allowImportingTsExtensions": false,
+
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "worker-configuration.d.ts"],
   "exclude": ["node_modules", "dist"]
 }
