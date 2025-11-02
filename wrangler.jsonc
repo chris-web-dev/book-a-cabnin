@@ -1,0 +1,11 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "book-a-cabin",
+  "main": "./server/dist/index.js",
+  "compatibility_date": "2025-05-25",
+  "assets": {
+    "directory": "./client/dist",
+    "not_found_handling": "single-page-application",
+  },
+  "compatibility_flags": ["nodejs_compat"],
+}
