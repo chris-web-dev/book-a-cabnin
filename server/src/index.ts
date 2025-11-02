@@ -1,23 +1,28 @@
-import { Hono } from "hono";
-import { cors } from "hono/cors";
-import type { ApiResponse } from "shared/dist";
+import type { Context } from "hono";
+import honoFactory from "./hono-factory";
+import {
+  corsMiddleware,
+  csrfMiddleware,
+  databaseMiddleware,
+  emailMiddleware,
+} from "./middleware";
 
+// Endret rekkefølgen på middleware
+const routes = honoFactory
+  .createApp()
+  .basePath("/api")
+  .use(corsMiddleware)
+  .use(csrfMiddleware)
+  .use(databaseMiddleware)
+  .use(emailMiddleware)
+  .get("/", (c: Context) => {
+    return c.json({
+      message: "Hono API",
+      version: 1,
+      status: "Ok",
+      statusCode: 200,
+    });
+  });
 
-const app = new Hono().basePath("/api");
-
-app.use(cors());
-
-app.get("/", (c) => {
-	return c.text("Hello Hono!");
-});
-
-app.get("/hello", async (c) => {
-	const data: ApiResponse = {
-		message: "Hello BHVR!",
-		success: true,
-	};
-
-	return c.json(data, { status: 200 });
-});
-
-export default app;
+export type HonoApp = typeof routes;
+export default routes;
