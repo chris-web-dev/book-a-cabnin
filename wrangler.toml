@@ -1,0 +1,13 @@
+name = "grindatunet_v2"
+main = "./server/dist/index.js"
+compatibility_date = "2025-05-25"
+compatibility_flags = ["nodejs_compat"]
+
+[assets]
+directory = "./client/dist"
+not_found_handling = "single-page-application"
+
+[[d1_databases]]
+binding = "grindatunet_v2"
+database_name = "grindatunet_v2"
+database_id = "593f1563-009d-4c8d-9aca-7c9dc4b092e4"
