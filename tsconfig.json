@@ -9,6 +9,7 @@
     "allowJs": true,
 
     // Path resolution
+    "outDir": "./dist",
     "baseUrl": "./",
     "paths": {
       "@server/*": ["./server/src/*"],
